@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.10)
+project(hello_world)
+
+set(CMAKE_CXX_STANDARD 17)
+include_directories(${CMAKE_SOURCE_DIR}/include) 
+set(SOURCES ${CMAKE_SOURCE_DIR}/hello_world.cc)
+add_executable(hello_world ${SOURCES})
+target_link_libraries(hello_world PRIVATE ${CMAKE_SOURCE_DIR}/libv8_monolith.a)
