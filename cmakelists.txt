@@ -2,7 +2,19 @@ cmake_minimum_required(VERSION 3.10)
 project(hello_world)
 
 set(CMAKE_CXX_STANDARD 17)
+
 include_directories(${CMAKE_SOURCE_DIR}/include) 
+
+# src c++ file
 set(SOURCES ${CMAKE_SOURCE_DIR}/hello_world.cc)
+
+#finds the icu on this path
+set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/icu")
+
+find_package(ICU REQUIRED COMPONENTS uc i18n)
+include_directories(${ICU_INCLUDE_DIRS})
+
 add_executable(hello_world ${SOURCES})
+
+target_link_libraries(hello_world PRIVATE ${ICU_LIBRARIES})
 target_link_libraries(hello_world PRIVATE ${CMAKE_SOURCE_DIR}/libv8_monolith.a)

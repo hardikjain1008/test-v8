@@ -11,8 +11,7 @@ const char *javascript_code = R"(
 int main()
 {
   auto PLATFORM = v8::platform::NewDefaultPlatform();
-  
-  v8::V8::InitializeICUDefaultLocation("");
+  v8::V8::InitializeICU();
   v8::V8::InitializeExternalStartupData("");
   PLATFORM = v8::platform::NewDefaultPlatform();
   v8::V8::InitializePlatform(PLATFORM.get());
